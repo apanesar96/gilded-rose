@@ -3,6 +3,7 @@ using GildedRoseKata;
 
 using System;
 using System.Collections.Generic;
+using ApprovalTests;
 
 namespace GildedRoseTests
 {
@@ -48,15 +49,21 @@ namespace GildedRoseTests
                 days = int.Parse(args[0]) + 1;
             }
 
+            var output = new List<String>();
             for (var i = 0; i < days; i++)
             {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
+                var header = "-------- day " + i + " --------";
+                output.Add(header);
+                var nameSellingQuality = "name, sellIn, quality";
+                output.Add(nameSellingQuality);
+                
                 for (var j = 0; j < Items.Count; j++)
                 {
-                    System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                    var combinedOutput = Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality;
+                    output.Add(combinedOutput);
                 }
-                Console.WriteLine("");
+
+                output.Add("");
                 app.UpdateQuality();
             }
         }
